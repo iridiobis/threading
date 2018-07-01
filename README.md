@@ -21,3 +21,12 @@ return external.doANetworkCall()
 return useCase.execute(process, scenario)
         .observeOn(AndroidSchedulers.mainThread())
 ```
+## Solution 3
+We create an executor that takes care the execute the use case subscribing on io and observing on main thread. This solution fails whenever there is a 3rd party that requires running on main thread (in our example, location). On solution 4, we will see how easy it is to fix this.
+```
+fun execute(useCase: UseCase, process: Process, scenario: Scenario) : Completable {
+        return useCase.execute(process, scenario)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+    }
+```

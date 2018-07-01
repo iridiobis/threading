@@ -5,6 +5,7 @@ import dagger.multibindings.*
 import es.iridiobis.threading.solution.UI
 import es.iridiobis.threading.solution.solution1.Solution1
 import es.iridiobis.threading.solution.solution2.Solution2
+import es.iridiobis.threading.solution.solution3.Solution3
 
 @Module
 class SolutionModule {
@@ -18,4 +19,10 @@ class SolutionModule {
     @IntoMap
     @StringKey("Solution 2")
     fun provideSolution2Presenter(solution2: Solution2): UI.Presenter = solution2
+
+
+    @Provides
+    @IntoMap
+    @StringKey("Solution 3")
+    fun provideSolution3Presenter(solution3: Solution3): UI.Presenter = solution3
 }
