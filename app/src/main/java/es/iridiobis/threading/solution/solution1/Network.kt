@@ -13,9 +13,9 @@ class Network @Inject constructor(private val external: Network3rdParty) {
     fun call(process: Process): Completable {
         process.runNetworkProcessBeforeCall()
         return external.doANetworkCall()
-                .doOnComplete { process.runNetworkProcessAfterCall() }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .doOnComplete { process.runNetworkProcessAfterCall() }
     }
 
 }

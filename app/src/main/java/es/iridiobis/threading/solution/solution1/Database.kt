@@ -12,9 +12,9 @@ class Database @Inject constructor(private val external : Database3rdParty) {
     fun call(process : Process) : Completable {
         process.runDatabaseProcessBeforeCall()
         return external.doADatabaseCall()
-                .doOnComplete { process.runDatabaseProcessAfterCall() }
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+                .doOnComplete { process.runDatabaseProcessAfterCall() }
     }
 
 }
