@@ -7,6 +7,7 @@ import es.iridiobis.threading.solution.solution1.Solution1
 import es.iridiobis.threading.solution.solution2.Solution2
 import es.iridiobis.threading.solution.solution3.Solution3
 import es.iridiobis.threading.solution.solution4.Solution4
+import es.iridiobis.threading.solution.solution5.Solution5
 
 @Module
 class SolutionModule {
@@ -30,4 +31,9 @@ class SolutionModule {
     @IntoMap
     @StringKey("Solution 4")
     fun provideSolution4Presenter(solution4: Solution4): UI.Presenter = solution4
+
+    @Provides
+    @IntoMap
+    @StringKey("Solution 5")
+    fun provideSolution5Presenter(solution5: Solution5): UI.Presenter = solution5
 }
