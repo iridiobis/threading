@@ -7,10 +7,11 @@ import javax.inject.Inject
 class Database3rdParty @Inject constructor(private val checker: ThreadChecker) {
 
     fun doADatabaseCall(): Completable =
-            if (checker.checkIsMainThread()) {
-                Completable.error(IllegalStateException("Database called from main thread"))
-            } else {
-                Completable.complete()
+            Completable.defer {
+                if (checker.checkIsMainThread()) {
+                    Completable.error(IllegalStateException("Database called from main thread"))
+                } else {
+                    Completable.complete()
+                }
             }
-
 }

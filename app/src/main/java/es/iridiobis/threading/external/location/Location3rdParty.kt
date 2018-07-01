@@ -7,10 +7,12 @@ import javax.inject.Inject
 class Location3rdParty @Inject constructor(private val checker: ThreadChecker) {
 
     fun doALocationCall(): Completable =
-            if (checker.checkIsMainThread()) {
-                Completable.complete()
-            } else {
-                Completable.error(IllegalStateException("Location called outside main thread"))
+            Completable.defer {
+                if (checker.checkIsMainThread()) {
+                    Completable.complete()
+                } else {
+                    Completable.error(IllegalStateException("Location called outside main thread"))
+                }
             }
 
 }

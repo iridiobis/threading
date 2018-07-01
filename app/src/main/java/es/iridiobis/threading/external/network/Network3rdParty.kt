@@ -7,10 +7,13 @@ import javax.inject.Inject
 class Network3rdParty @Inject constructor(private val checker: ThreadChecker) {
 
     fun doANetworkCall(): Completable =
-            if (checker.checkIsMainThread()) {
-                Completable.error(IllegalStateException("Network called from main thread"))
-            } else {
-                Completable.complete()
+            Completable.defer {
+                if (checker.checkIsMainThread()) {
+                    Completable.error(IllegalStateException("Network called from main thread"))
+                } else {
+                    Completable.complete()
+                }
             }
+
 
 }
