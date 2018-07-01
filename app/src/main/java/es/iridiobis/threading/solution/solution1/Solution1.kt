@@ -8,7 +8,6 @@ import javax.inject.Inject
 
 class Solution1 @Inject constructor(private val useCase: UseCase) : UI.Presenter {
     override fun start(process: Process, scenario: Scenario): Completable {
-        process.runUseCaseProcessBeforeCall()
-        return useCase.execute(process, scenario).doOnComplete { process.runUseCaseProcessAfterCall() }
+        return useCase.execute(process, scenario)
     }
 }

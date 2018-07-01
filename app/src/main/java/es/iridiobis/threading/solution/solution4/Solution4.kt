@@ -11,7 +11,6 @@ class Solution4 @Inject constructor(
         private val executor: Executor
 ) : UI.Presenter {
     override fun start(process: Process, scenario: Scenario): Completable {
-        process.runUseCaseProcessBeforeCall()
         return executor.execute(useCase, process, scenario)
     }
 }

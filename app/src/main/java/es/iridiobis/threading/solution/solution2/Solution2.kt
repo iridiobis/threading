@@ -9,9 +9,7 @@ import javax.inject.Inject
 
 class Solution2 @Inject constructor(private val useCase: UseCase) : UI.Presenter {
     override fun start(process: Process, scenario: Scenario): Completable {
-        process.runUseCaseProcessBeforeCall()
         return useCase.execute(process, scenario)
-                .doOnComplete { process.runUseCaseProcessAfterCall() }
                 .observeOn(AndroidSchedulers.mainThread())
     }
 }
