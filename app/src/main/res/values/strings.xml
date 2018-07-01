@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">Threading</string>
+    <string name="scenario_label">Scenario</string>
+    <string name="process_label">Process</string>
+    <string name="solution_label">Solution</string>
+    <string name="run">Run</string>
+
+    <string-array name="scenarios">
+        <item>Full</item>
+        <item>Cache</item>
+        <item>Network</item>
+        <item>Location</item>
+        <item>Database</item>
+        <item>Memory Cache</item>
+        <item>Use case</item>
+    </string-array>
+
+    <string-array name="processes">
+        <item>Simple</item>
+    </string-array>
+
+    <string-array name="solutions">
+        <item>Solution 1</item>
+    </string-array>
 </resources>

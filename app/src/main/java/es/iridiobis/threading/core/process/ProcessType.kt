@@ -1,6 +1,6 @@
 package es.iridiobis.threading.core.process
 
 
-enum class ProcessType {
-    SIMPLE
+enum class ProcessType(val value : Int) {
+    SIMPLE(0)
 }
