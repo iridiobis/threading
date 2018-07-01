@@ -21,5 +21,6 @@
 
     <string-array name="solutions">
         <item>Solution 1</item>
+        <item>Solution 2</item>
     </string-array>
 </resources>
