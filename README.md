@@ -30,3 +30,18 @@ fun execute(useCase: UseCase, process: Process, scenario: Scenario) : Completabl
                 .observeOn(AndroidSchedulers.mainThread())
     }
 ```
+## Solution 4
+We create an executor that takes care the execute the use case subscribing on io and observing on main thread. For those 3rd party that require running on a specific thread (i.e. main thread), we can just handle it on their wrapper, observing on the calling thread.
+```
+fun execute(useCase: UseCase, process: Process, scenario: Scenario) : Completable {
+        return useCase.execute(process, scenario)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+    }
+```
+```
+return external.doALocationCall()
+        .subscribeOn(AndroidSchedulers.mainThread())
+        .observeOn(Schedulers.io())
+        .doOnComplete { process.runLocationProcessAfterCall() }
+```
