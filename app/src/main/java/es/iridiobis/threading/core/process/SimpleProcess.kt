@@ -2,8 +2,9 @@ package es.iridiobis.threading.core.process
 
 import android.util.Log
 import es.iridiobis.threading.core.*
+import javax.inject.Inject
 
-class SimpleProcess constructor(private val threadFormatter: ThreadFormatter) : Process {
+class SimpleProcess @Inject constructor(private val threadFormatter: ThreadFormatter) : Process {
 
     override fun runUseCaseProcessBeforeCall() {
         Log.d(TAG, "Run use case before call on " + threadFormatter.format(Thread.currentThread()))

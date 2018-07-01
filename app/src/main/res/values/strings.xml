@@ -17,6 +17,8 @@
 
     <string-array name="processes">
         <item>Simple</item>
+        <item>Heavy processing after network call</item>
+        <item>All Heavy</item>
     </string-array>
 
     <string-array name="solutions">

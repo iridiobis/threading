@@ -2,9 +2,11 @@ package es.iridiobis.threading
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.View
 import android.widget.*
 import dagger.android.AndroidInjection
+import es.iridiobis.threading.core.TAG
 import es.iridiobis.threading.solution.UI
 import javax.inject.Inject
 
@@ -52,11 +54,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun runScenario(view: View) {
-        ui.analyzeSolution(
-                scenarioSpinner.selectedItemPosition,
-                processSpinner.selectedItemPosition,
-                solutionSpinner.selectedItem.toString()
-        )
+        try {
+            ui.analyzeSolution(
+                    scenarioSpinner.selectedItemPosition,
+                    processSpinner.selectedItemPosition,
+                    solutionSpinner.selectedItem.toString()
+            )
+        } catch (exception: IllegalStateException) {
+            Log.e(TAG, exception.message)
+        }
     }
 
 }
